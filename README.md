@@ -1,15 +1,15 @@
 <div align="center">
   <br>
- <img src="./assets/icon.svg" alt="Made in Browser Extension" width="128">
+ <img src=".assets/logo.svg" alt="Made in Browser Extension" width="128">
   <br>
   <h2>
-    Made In <br>
+    ADWISE Post Scrapper <br>
     Browser Extension
     <br>
   </h2>
 </div>
 
-<p align="center">A cross-platform web browser extension that shows the country of origin on product for popular websites</p>
+<p align="center">A cross-platform web browser extension scrapes a list of embeds from any linked in company page</p>
 <hr />
 
 <div align="center" >
@@ -33,7 +33,6 @@
   - [Clone the repo](#clone-the-repo)
   - [Running the extension](#running-the-extension)
   - [Available Commands](#available-commands)
-- [Contributing](#contributing)
 
 ## Features
 
@@ -85,11 +84,3 @@ git clone https://github.com/luis-c465/made-in.git
 - `pnpm run clean` to remove dist folder. `dev` and `build` commands call this command.
 - `pnpm run format` to fix code with eslint and prettier.
 - `pnpm run lint` to call ESLint and Prettier.
-
-## Contributing
-
-Contributions are always welcome!
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for ways to get started.
-
-This repository is following the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) standard.
