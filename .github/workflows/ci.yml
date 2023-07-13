@@ -31,6 +31,22 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+        with:
+          zipFilePath: 'build.zip'
+          crxFilePath: 'extension.crx'
+          privateKey: ${{ secrets.CHROME_CRX_PRIVATE_KEY }}
+
+      - name: 'Release on github'
+        uses: 'marvinpinto/action-automatic-releases@latest'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          automatic_release_tag: v${{ env.RELEASE_VERSION }}
+          prerelease: true
+          title: Development Build v${{ env.RELEASE_VERSION }}
+          files: |
+            extension.crx
+
   lint:
     runs-on: ubuntu-latest
     steps:

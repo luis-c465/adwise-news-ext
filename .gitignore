@@ -23,3 +23,7 @@ dist-firefox-v2
 *.njsproj
 *.sln
 *.sw?
+
+build.zip
+vite.config.ts.timestamp-*
+*.pem
