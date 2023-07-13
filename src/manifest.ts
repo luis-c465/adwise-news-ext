@@ -1,11 +1,7 @@
 import { defineManifest } from '@crxjs/vite-plugin';
 import { version } from '../package.json';
 
-// NOTE: do not include src/ in paths,
-// vite root folder: src, public folder: public (based on the project root)
-// @see ../vite.config.ts#L16
-
-const amazonSearchHost = 'www.amazon.com/s';
+const host = 'www.linkedin.com/company/*/posts/*';
 
 const icons: Record<string, string> = {
   '16': 'images/icon16.png',
@@ -14,21 +10,20 @@ const icons: Record<string, string> = {
   '128': 'images/icon128.png',
 };
 
+const activateOn = [`https://${host}`, `https://${host}`];
+
 const manifest = defineManifest(async (env) => ({
   manifest_version: 3,
-  name: `${env.mode === 'development' ? '[Dev] ' : ''} Made in`,
-  description: 'Made in',
+  name: `${env.mode === 'development' ? '[Dev] ' : ''} ADWISE News`,
+  description: 'ADWISE News scrapper for linkedin',
   version,
-  background: {
-    service_worker: 'background/index.ts',
-  },
   content_scripts: [
     {
-      matches: [`https://${amazonSearchHost}*`, `https://${amazonSearchHost}*`, 'file:///*'],
-      js: ['content/amazon/index.ts'],
+      matches: activateOn,
+      js: ['content/index.ts'],
     },
   ],
-  host_permissions: ['<all_urls>'],
+  host_permissions: activateOn,
   options_ui: {
     page: 'options/options.html',
     open_in_tab: true,

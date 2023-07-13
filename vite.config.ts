@@ -2,7 +2,6 @@ import { crx } from '@crxjs/vite-plugin';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import { join, resolve } from 'path';
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import manifest from './src/manifest';
 
 export default defineConfig({
@@ -33,5 +32,11 @@ export default defineConfig({
       },
     },
   },
-  plugins: [tsconfigPaths(), crx({ manifest }), svelte({ configFile: '../svelte.config.js' })],
+  plugins: [crx({ manifest }), svelte({ configFile: '../svelte.config.js' })],
+  resolve: {
+    alias: {
+      '~': resolve('src/'),
+      '@public': resolve('public/'),
+    },
+  },
 });
